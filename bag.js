@@ -2,13 +2,17 @@ img = "";
 status = "";
 
 function preload() {
-    img = loadImage("tv.jpg");
+    img = loadImage("bag.jpg");
 }
 
 function setup() {
     canvas = createCanvas(640, 420);
     canvas.center();
-    objectDetection = ml5.objectDetector("cocossd",modelLoaded);
+    objectDetection = ml5.objectDetector("cocossd", modelLoaded);
+}
+
+function draw() {
+    image(img, 0, 0, 640, 420);
 }
 
 function modelLoaded() {
