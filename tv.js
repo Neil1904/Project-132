@@ -1,5 +1,6 @@
 img = "";
 status = "";
+objects = [];
 
 function preload() {
     img = loadImage("tv.jpg");
@@ -8,7 +9,12 @@ function preload() {
 function setup() {
     canvas = createCanvas(640, 420);
     canvas.center();
-    objectDetection = ml5.objectDetector("cocossd",modelLoaded);
+    objectDetection = ml5.objectDetector("cocossd", modelLoaded);
+    document.getElementById("status").innerHTML = "Status : Detecting Object";
+}
+
+function draw() {
+    image(img, 0, 0, 640, 420);
 }
 
 function modelLoaded() {
@@ -23,5 +29,6 @@ function gotresults(error, results) {
     }
     else{
         console.log(results);
+        objects = results;
     }
 }
